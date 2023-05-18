@@ -24,12 +24,17 @@ function Gameboard() {
     };
   }
   
-  // Usage
+  // Usage / Example
   const gameboard = new Gameboard();
-  gameboard.initializeBoard(3);
+  gameboard.initializeBoard(3); // creates a 3x3 board
   gameboard.setCell(0, 0, 'X');
   gameboard.setCell(1, 1, 'O');
+  gameboard.setCell(2, 2, 'X')
   gameboard.printBoard();
+
+//   [ [ 'X', null, null ],
+//   [ null, 'O', null ],
+//   [ null, null, 'X' ] ]
 
 // Your players are also going to be stored in objects
 
