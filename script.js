@@ -1,10 +1,61 @@
-// You’re going to store the gameboard as an array inside of a Gameboard object
+// Create a Gameboard module
+const Gameboard = (function() {
+    let board = [];
+  
+    function initializeBoard(size) {
+      board = Array(size).fill(null).map(() => Array(size).fill(null));
+    }
+  
+    function getCell(row, col) {
+      return board[row][col];
+    }
+  
+    function setCell(row, col, value) {
+      board[row][col] = value;
+    }
+  
+    function printBoard() {
+      console.log(board);
+    }
+  
+    return {
+      initializeBoard,
+      getCell,
+      setCell,
+      printBoard
+    };
+  })();
 
+// Create a player factory function
+const Player = (name, symbol) => {
+    function makeMove() {
+      // Logic for the player to make a move goes here
+      // Example:
+      // Prompt the user for input or generate a random move for the computer
+    }
+  
+    return {
+      name,
+      symbol,
+      makeMove
+    };
+  };
 
-// Your players are also going to be stored in objects
+// Create a gameboard and initialize it
+Gameboard.initializeBoard(3); //using 3x3 rows for tic-tac-toe board
 
-// you’re probably going to want an object to control the flow of the game itself.
+// Set cells on the game board
+Gameboard.setCell(0, 0, 'X');
+Gameboard.setCell(1, 1, 'O');
+Gameboard.setCell(2, 2, 'X');
 
+// Print the game board
+Gameboard.printBoard();
 
-// Your main goal here is to have as little global code as possible. Try tucking everything away inside of a module or factory.
-// Rule of thumb: if you only ever need ONE of something (gameBoard, displayController), use a module.If you need multiples of something (players!), create them with factories.
+// Create players using the Player factory function
+const player1 = Player('Player 1', 'X');
+const player2 = Player('Player 2', 'O');
+
+// Make moves
+const move1 = player1.makeMove();
+const move2 = player2.makeMove();
