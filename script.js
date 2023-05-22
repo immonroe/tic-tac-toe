@@ -44,7 +44,7 @@ const Player = (name, symbol) => {
 // Create a gameboard and initialize it
 Gameboard.initializeBoard(3); //using 3x3 rows for tic-tac-toe board
 
-// Set cells on the game board
+// Set cells on the game board - examples below
 Gameboard.setCell(0, 0, 'X');
 Gameboard.setCell(1, 1, 'O');
 Gameboard.setCell(2, 2, 'X');
