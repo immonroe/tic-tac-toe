@@ -123,7 +123,11 @@ cells.forEach(function(node){
 
     if (availableCellCount > 1) {
       cells[aiPick].innerText = aiSymbol;
+      if (checkWin(aiSymbol)) {
+        console.log('Computer wins!');
+      }
     }
   })
 })
+
 
