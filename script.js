@@ -122,10 +122,6 @@ cells.forEach(function(node){
       console.log('Player wins!');
     }
 
-    if (checkWin(aiSymbol)) {
-      console.log('Computer wins!');
-    }
-
     if (availableCellCount > 1) {
       cells[aiPick].innerText = aiSymbol;
       if (checkWin(aiSymbol)) {
