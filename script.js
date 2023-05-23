@@ -96,6 +96,11 @@ cells.forEach(function(node){
       return 1; 
     }
 
+    if (node.innerText !== '') {
+      // Cell already has a symbol, do not replace
+      return;
+    }
+
     aiSymbol = playerSymbol === 'X' ? 'O' : 'X'
     node.innerText = playerSymbol;
 
