@@ -131,3 +131,28 @@ cells.forEach(function(node){
   })
 })
 
+// modal on startup asking if user would like to be X or O
+// window.addEventListener('DOMContentLoaded', function() {
+//   var modal = document.getElementById('modal');
+//   var xButton = document.getElementById('x-button');
+//   var oButton = document.getElementById('o-button');
+
+//   xButton.addEventListener('click', function() {
+//     modal.style.display = 'none';
+//     // Call a function to start the game with 'X' as the player's choice
+//     startGame('X');
+//   });
+
+//   oButton.addEventListener('click', function() {
+//     modal.style.display = 'none';
+//     // Call a function to start the game with 'O' as the player's choice
+//     startGame('O');
+//   });
+
+//   modal.style.display = 'block';
+// });
+
+// function startGame(playerChoice) {
+//   // Your logic to start the tic-tac-toe game with the player's choice
+//   console.log('Player chose:', playerChoice);
+// }
