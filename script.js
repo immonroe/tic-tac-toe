@@ -67,9 +67,26 @@ let playerSymbol = '';
 let aiSymbol = '';
 let cells = document.querySelectorAll(".cell")
 
+// Function to check the winning conditions
+function checkWin(symbol) {
+  if (
+    (cells[0].innerText === symbol && cells[1].innerText === symbol && cells[2].innerText === symbol) ||
+    (cells[3].innerText === symbol && cells[4].innerText === symbol && cells[5].innerText === symbol) ||
+    (cells[6].innerText === symbol && cells[7].innerText === symbol && cells[8].innerText === symbol) ||
+    (cells[0].innerText === symbol && cells[3].innerText === symbol && cells[6].innerText === symbol) ||
+    (cells[1].innerText === symbol && cells[4].innerText === symbol && cells[7].innerText === symbol) ||
+    (cells[2].innerText === symbol && cells[5].innerText === symbol && cells[8].innerText === symbol) ||
+    (cells[0].innerText === symbol && cells[4].innerText === symbol && cells[8].innerText === symbol) ||
+    (cells[2].innerText === symbol && cells[4].innerText === symbol && cells[6].innerText === symbol)
+  ) {
+    return true; // Winning condition is met
+  }
+  return false; // Winning condition is not met
+}
+
 cells.forEach(function(node){
   node.addEventListener('click', function(){
-    if (playerSymbol == '') {
+    if (playerSymbol === '') {
       playerSymbol = window.prompt('Would you like to be X or O?', 'X')
     }
 
@@ -82,37 +99,31 @@ cells.forEach(function(node){
     aiSymbol = playerSymbol === 'X' ? 'O' : 'X'
     node.innerText = playerSymbol;
 
-    let availableCellCount = 9;
+    let availableCellCount = Array.from(cells).filter(cell => cell.innerText === '').length;
     let aiPick = 0;
     let isValidAiPick = false;
 
     do {
-      availableCellCount = Array.from(cells).filter(cell => cell.innerText == '').length
+      availableCellCount = Array.from(cells).filter(cell => cell.innerText === '').length;
 
-      aiPick = Math.floor(Math.random() * 9)
+      aiPick = Math.floor(Math.random() * 9);
       isValidAiPick = cells[aiPick].innerText === '';
     }
     while (!isValidAiPick && availableCellCount > 1);
 
     console.log(aiPick)
 
-    // create a function call to check symbols too see if player or CPU won - pass in a string inside node to see values
-    // 
-    // cells[0].innerText has won!
+    if (checkWin(playerSymbol)) {
+      console.log('Player wins!');
+    }
 
-    if (cells[0].innerText === cells[1].innerText && cells[1].innerText === cells[2].innerText) console.log('winner')
-    if (cells[3].innerText === cells[4].innerText && cells[4].innerText === cells[5].innerText) console.log('winner')
-    if (cells[6].innerText === cells[7].innerText && cells[7].innerText === cells[8].innerText) console.log('winner')
-    
-    if (cells[0].innerText === cells[3].innerText && cells[3].innerText === cells[6].innerText) console.log('winner')
-    if (cells[1].innerText === cells[4].innerText && cells[4].innerText === cells[7].innerText) console.log('winner')
-    if (cells[2].innerText === cells[5].innerText && cells[5].innerText === cells[8].innerText) console.log('winner')
-    
-    if (cells[0].innerText === cells[1].innerText && cells[1].innerText === cells[2].innerText) console.log('winner')
-    if (cells[0].innerText === cells[1].innerText && cells[1].innerText === cells[2].innerText) console.log('winner')
+    if (checkWin(aiSymbol)) {
+      console.log('Computer wins!');
+    }
 
     if (availableCellCount > 1) {
       cells[aiPick].innerText = aiSymbol;
     }
   })
 })
+
