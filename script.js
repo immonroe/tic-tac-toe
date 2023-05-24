@@ -84,50 +84,102 @@ function checkWin(symbol) {
   return false; // Winning condition is not met
 }
 
+let arr = []
+
+function onClick(node){
+  if (playerSymbol === '') {
+    playerSymbol = window.prompt('Would you like to be X or O?', 'X')
+  }
+
+  if (playerSymbol !== 'X' && playerSymbol !== 'O') {
+    alert(`${playerSymbol} is not valid`)
+    playerSymbol = ''
+    return 1; 
+  }
+
+  if (node.innerText !== '') {
+    // Cell already has a symbol, do not replace
+    return;
+  }
+
+  aiSymbol = playerSymbol === 'X' ? 'O' : 'X'
+  node.innerText = playerSymbol;
+
+  let availableCellCount = Array.from(cells).filter(cell => cell.innerText === '').length;
+  let aiPick = 0;
+  let isValidAiPick = false;
+
+  do {
+    availableCellCount = Array.from(cells).filter(cell => cell.innerText === '').length;
+
+    aiPick = Math.floor(Math.random() * 9);
+    isValidAiPick = cells[aiPick].innerText === '';
+  }
+  while (!isValidAiPick && availableCellCount > 1);
+
+  console.log(aiPick)
+
+  if (checkWin(playerSymbol)) {
+    endGame('Player wins!');
+  }
+
+  if (availableCellCount > 1) {
+    cells[aiPick].innerText = aiSymbol;
+    if (checkWin(aiSymbol)) {
+      endGame('Computer wins!');
+    }
+  }
+}
+
 cells.forEach(function(node){
-  node.addEventListener('click', function(){
-    if (playerSymbol === '') {
-      playerSymbol = window.prompt('Would you like to be X or O?', 'X')
-    }
+  let listener = () => {onClick(node)}
 
-    if (playerSymbol !== 'X' && playerSymbol !== 'O') {
-      alert(`${playerSymbol} is not valid`)
-      playerSymbol = ''
-      return 1; 
-    }
+  node.addEventListener('click', listener)
 
-    if (node.innerText !== '') {
-      // Cell already has a symbol, do not replace
-      return;
-    }
-
-    aiSymbol = playerSymbol === 'X' ? 'O' : 'X'
-    node.innerText = playerSymbol;
-
-    let availableCellCount = Array.from(cells).filter(cell => cell.innerText === '').length;
-    let aiPick = 0;
-    let isValidAiPick = false;
-
-    do {
-      availableCellCount = Array.from(cells).filter(cell => cell.innerText === '').length;
-
-      aiPick = Math.floor(Math.random() * 9);
-      isValidAiPick = cells[aiPick].innerText === '';
-    }
-    while (!isValidAiPick && availableCellCount > 1);
-
-    console.log(aiPick)
-
-    if (checkWin(playerSymbol)) {
-      console.log('Player wins!');
-    }
-
-    if (availableCellCount > 1) {
-      cells[aiPick].innerText = aiSymbol;
-      if (checkWin(aiSymbol)) {
-        console.log('Computer wins!');
-      }
-    }
-  })
+  let cell = {
+    'cell': node,// .getAttribute('data-cell-index'),
+    'listener': listener
+  }
+  arr.push(cell)
 })
 
+function endGame(message){
+  console.log(message)
+
+  arr.forEach(function(item){
+    item.cell.removeEventListener('click', item.listener)
+  }) 
+}
+
+// console.log(arr)
+
+// modal on startup asking if user would like to be X or O
+window.addEventListener('DOMContentLoaded', function() {
+  var modal = document.getElementById('modal');
+  var xButton = document.getElementById('x-button');
+  var oButton = document.getElementById('o-button');
+
+  xButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+    // Call a function to start the game with 'X' as the player's choice
+    startGame('X');
+  });
+
+  oButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+    // Call a function to start the game with 'O' as the player's choice
+    startGame('O');
+  });
+
+  modal.style.display = 'block';
+});
+
+function startGame(playerChoice) {
+  // Your logic to start the tic-tac-toe game with the player's choice
+  playerSymbol = playerChoice;
+  console.log('Player chose:', playerChoice);
+}
+
+// if no more available cells - draw();
+
+// if win condition is met, cannot make another turn.
