@@ -89,9 +89,7 @@ let arr = []
 function onClick(node){
   if (playerSymbol === '') {
     playerSymbol = window.prompt('Would you like to be X or O?', 'X')
-  }
-
-  if (playerSymbol !== 'X' && playerSymbol !== 'O') {
+  } else if (playerSymbol !== 'X' && playerSymbol !== 'O') {
     alert(`${playerSymbol} is not valid`)
     playerSymbol = ''
     return 1; 
