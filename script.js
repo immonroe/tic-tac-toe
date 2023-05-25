@@ -121,14 +121,21 @@ function onClick(node){
 
   if (checkWin(playerSymbol)) {
     endGame('Player wins!');
-  }
-
-  if (availableCellCount > 1) {
+  } else if (availableCellCount > 1) {
     cells[aiPick].innerText = aiSymbol;
     if (checkWin(aiSymbol)) {
       endGame('Computer wins!');
+    } else {
+      // No winner yet, check for a draw
+      if (availableCellCount === 1) {
+        endGame('Draw!');
+      }
     }
+  } else {
+    endGame('Draw!');
   }
+  // if no more available cells and no winner - draw();
+  // if no more available cells, after player/AI move then call the draw()
 }
 
 cells.forEach(function(node){
@@ -137,12 +144,13 @@ cells.forEach(function(node){
   node.addEventListener('click', listener)
 
   let cell = {
-    'cell': node,// .getAttribute('data-cell-index'),
+    'cell': node,
     'listener': listener
   }
   arr.push(cell)
 })
 
+// if win condition is met, cannot make another turn.
 function endGame(message){
   console.log(message)
 
@@ -150,8 +158,6 @@ function endGame(message){
     item.cell.removeEventListener('click', item.listener)
   }) 
 }
-
-// console.log(arr)
 
 // modal on startup asking if user would like to be X or O
 window.addEventListener('DOMContentLoaded', function() {
@@ -180,6 +186,3 @@ function startGame(playerChoice) {
   console.log('Player chose:', playerChoice);
 }
 
-// if no more available cells - draw();
-
-// if win condition is met, cannot make another turn.
