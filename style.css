@@ -8,6 +8,7 @@ html, body {
 body {
   font-family: 'Press Start 2P', sans-serif;
   display: flex;
+  gap: 1rem;
   align-items: center;
   flex-direction: column;
   /* Gradient background */
@@ -33,6 +34,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 h1.title {
@@ -41,7 +43,7 @@ h1.title {
 }
 
 .title-container {
-  padding-top: 2rem;
+  padding-top: 3rem;
   display: flex;
   justify-content: center;
 }
