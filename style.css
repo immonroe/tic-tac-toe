@@ -1,120 +1,127 @@
 html, body {
+  font-family: 'Press Start 2P', sans-serif;
   width: 100%;
   height:100%;
   color: white;
 }
 
 body {
-    font-family: "Arial", sans-serif;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    /* Gradient background */
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+  font-family: 'Press Start 2P', sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* Gradient background */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+      background-position: 0% 50%;
   }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
   
-  section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  h1.title {
-    font-size: 4rem;
-  }
-  
-  .title-container {
-    padding-top: 2rem;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .game-container {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    width: 306px;
-    margin: 50px auto;
-  }
-  
-  .cell {
-    font-family: "Permanent Marker", cursive;
-    width: 100px;
-    height: 100px;
-    box-shadow: 0 0 0 1px #333333;
-    border: 1px solid white;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
-    text-align: center;
-  }
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  /* Modal */
-  
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: none;
-    font-size: 2rem;
-    gap: 1rem;
-    text-align: center;
-    height: 100%;
-    width: 100%;
+h1.title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+}
 
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+.title-container {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.game-container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 20em;
+  margin: 50px auto;
+}
+
+.cell {
+  font-family: 'Press Start 2P', cursive;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 0 0 1px white;
+  border: .25rem solid white;
+  cursor: pointer;
+  line-height: 100px;
+  font-size: 60px;
+  text-align: center;
+}
+
+/* Modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  font-family: 'Press Start 2P', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: none;
+  font-size: 1rem;
+  gap: 1rem;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+      background-position: 0% 50%;
   }
-  
-  button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+  50% {
+      background-position: 100% 50%;
   }
-  
-  /* restart button */
-  
-  .restart-button {
-    display: flex;
-    justify-content: center;
+  100% {
+      background-position: 0% 50%;
   }
+}
+
+button {
+  font-family: 'Press Start 2P', sans-serif;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: none;
+  border: .25rem solid white;
+  color: white;
+}
+
+/* restart button */
+
+.restart-button {
+  display: flex;
+  justify-content: center;
+}

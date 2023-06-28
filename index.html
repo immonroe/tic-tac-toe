@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
@@ -16,7 +19,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <h2>Choose a symbol<br></h2>
-            <input type="text" id="player-name" placeholder="Enter your name">
+            <!-- <input type="text" id="player-name" placeholder="Enter your name"> -->
             <div>
                 <button id="x-button">X</button>
                 <button id="o-button">O</button>
@@ -25,7 +28,7 @@
         </div>
     </div>
 
-    <section>
+    <div class="content">
         <div class="game-container">
             <div data-cell-index="0" class="cell"></div>
             <div data-cell-index="1" class="cell"></div>
@@ -42,7 +45,7 @@
         <button onClick="window.location.reload();">Restart</button>
     </div>
         
-    </section>
+</div>
 
     <script src="script.js" defer></script>
 </body>
