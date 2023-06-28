@@ -60,9 +60,6 @@ const player2 = Player('Player 2', 'O');
 const move1 = player1.makeMove();
 const move2 = player2.makeMove();
 
-
-// proof of concept
-
 let playerSymbol = '';
 let aiSymbol = '';
 let cells = document.querySelectorAll(".cell")
@@ -115,14 +112,21 @@ function onClick(node){
   }
   while (!isValidAiPick && availableCellCount > 1);
 
-  console.log(aiPick)
+  // console.log(aiPick)
+
+  playerScore = 0
+  computerScore = 0
 
   if (checkWin(playerSymbol)) {
     endGame('Player wins!');
+    playerScore += 1
+    console.log(playerScore)
   } else if (availableCellCount > 1) {
     cells[aiPick].innerText = aiSymbol;
     if (checkWin(aiSymbol)) {
       endGame('Computer wins!');
+      computerScore += 1
+      console.log(computerScore)
     } else {
       // No winner yet, check for a draw
       if (availableCellCount === 1) {
@@ -150,7 +154,7 @@ cells.forEach(function(node){
 
 // if win condition is met, cannot make another turn.
 function endGame(message){
-  console.log(message)
+  // console.log(message)
 
   arr.forEach(function(item){
     item.cell.removeEventListener('click', item.listener)
@@ -183,4 +187,3 @@ function startGame(playerChoice) {
   playerSymbol = playerChoice;
   console.log('Player chose:', playerChoice);
 }
-

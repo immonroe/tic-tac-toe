@@ -1,5 +1,8 @@
 body {
     font-family: "Arial", sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
   
   section {
@@ -9,12 +12,14 @@ body {
     height: 100vh;
   }
   
-  h1 {
-    text-align: center;
+  h1.title {
+    font-size: 4rem;
   }
   
   .title-container {
     padding-top: 2rem;
+    display: flex;
+    justify-content: center;
   }
   
   .game-container {
@@ -64,4 +69,9 @@ body {
     font-size: 16px;
   }
   
+  /* restart button */
   
+  .restart-button {
+    display: flex;
+    justify-content: center;
+  }
