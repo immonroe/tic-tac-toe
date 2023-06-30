@@ -28,6 +28,11 @@ body {
       background-position: 0% 50%;
   }
 }
+
+#game-status {
+  font-family: 'Press Start 2P', sans-serif;
+  padding-bottom: 1rem;
+}
   
 .content {
   display: flex;
