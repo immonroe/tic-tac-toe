@@ -111,10 +111,9 @@ function onClick(node){
   }
   while (!isValidAiPick && availableCellCount > 1);
 
-  
-
   if (checkWin(playerSymbol)) {
-    endGame('Player wins!'); // give option for user to enter name on home screen and use their name to say then won the game
+    var input = document.getElementById("userInput").value;
+    endGame(`${input} wins!`); // give option for user to enter name on home screen and use their name to say then won the game
   } else if (availableCellCount > 1) {
     cells[aiPick].innerText = aiSymbol;
     if (checkWin(aiSymbol)) {
@@ -143,6 +142,11 @@ cells.forEach(function(node){
   }
   arr.push(cell)
 })
+
+function othername() {
+  var input = document.getElementById("userInput").value;
+  console.log(input);
+}
 
 // if win condition is met, cannot make another turn.
 function endGame(message){
