@@ -63,6 +63,7 @@ const move2 = player2.makeMove();
 let playerSymbol = '';
 let aiSymbol = '';
 let cells = document.querySelectorAll(".cell")
+let username = '';
 
 // Function to check the winning conditions
 function checkWin(symbol) {
@@ -112,8 +113,7 @@ function onClick(node){
   while (!isValidAiPick && availableCellCount > 1);
 
   if (checkWin(playerSymbol)) {
-    var input = document.getElementById("userInput").value;
-    endGame(`${input} wins!`); // give option for user to enter name on home screen and use their name to say then won the game
+    endGame(`${username} wins!`); // give option for user to enter name on home screen and use their name to say then won the game
   } else if (availableCellCount > 1) {
     cells[aiPick].innerText = aiSymbol;
     if (checkWin(aiSymbol)) {
@@ -143,9 +143,12 @@ cells.forEach(function(node){
   arr.push(cell)
 })
 
-function othername() {
-  var input = document.getElementById("userInput").value;
-  console.log(input);
+function getUserName() {
+  username = document.getElementById("userInput").value;
+  console.log(username)
+  if (username == '') {
+    username = 'Player';
+  }
 }
 
 // if win condition is met, cannot make another turn.
@@ -179,7 +182,13 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function startGame(playerChoice) {
+  getUserName();
+
   // Your logic to start the tic-tac-toe game with the player's choice
   playerSymbol = playerChoice;
   console.log('Player chose:', playerChoice);
 }
+
+// AI Difficulty
+// easy - random
+// impossible - blocks user from winning

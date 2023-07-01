@@ -7,9 +7,11 @@ html, body {
 
 body {
   font-family: 'Press Start 2P', sans-serif;
+  height: 100vh;
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   /* Gradient background */
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -43,14 +45,17 @@ body {
 }
 
 h1.title {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', 'sans-serif';
   font-size: 2rem;
 }
 
 .title-container {
+  position: fixed;
+  top: 0;
   padding-top: 3rem;
   display: flex;
   justify-content: center;
+  font-size: 2rem;
 }
 
 .game-container {
@@ -58,10 +63,12 @@ h1.title {
   grid-template-columns: repeat(3, auto);
   width: 20em;
   margin: 50px auto;
+  border: .25rem solid white;
+  margin-top: 7.5rem;
 }
 
 .cell {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', 'sans-serif';
   width: 100px;
   height: 100px;
   box-shadow: 0 0 0 1px white;
@@ -75,13 +82,14 @@ h1.title {
 /* Modal */
 
 #userInput {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', 'sans-serif';
   width: 15rem;
   height: 1.69rem;
   border: .25rem solid white;
   background: none;
   color: white;
   justify-content: space-between;
+  text-align: center;
 }
 
 ::placeholder {
@@ -90,7 +98,7 @@ h1.title {
 }
 
 #submit-button {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', 'sans-serif';
   border: .25rem solid white;
   background: none;
   color: white;
