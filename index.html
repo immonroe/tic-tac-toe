@@ -18,11 +18,24 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h2>Choose a symbol<br></h2>
-            <!-- <input type="text" id="player-name" placeholder="Enter your name"> -->
-            <div>
-                <button id="x-button">X</button>
-                <button id="o-button">O</button>
+            <div class="title-container">
+                <h1>Tic-Tac-Toe</h1>
+            </div>
+            <div class="name-subcontainer">
+                <h2>Enter Your Name</h2>
+                <form id="form" onsubmit="return false;">
+                    <input type="text" id="userInput" value="Player" />
+                    <!-- <input type="submit" id="submit-button" onclick="othername();" /> -->
+                </form>
+                
+            </div>
+            <div class="symbol-subcontainer">
+                <h2>Choose a Symbol</h2>
+                <!-- <input type="text" id="player-name" placeholder="Enter your name"> -->
+                <div>
+                    <button id="x-button">X</button>
+                    <button id="o-button">O</button>
+                </div>
             </div>
             
         </div>
@@ -40,8 +53,8 @@
             <div data-cell-index="7" class="cell"></div>
             <div data-cell-index="8" class="cell"></div>
         </div>
-        <!-- <h2 class="game-status"></h2> -->
-    <div class="restart-button">
+        <div id="game-status"></div>
+        <div class="restart-button">
         <button onClick="window.location.reload();">Restart</button>
     </div>
         
