@@ -177,3 +177,45 @@ function startGame(playerChoice) {
   playerSymbol = playerChoice;
   console.log('Player chose:', playerChoice);
 }
+
+// impossible difficulty
+function minimax(game, depth) {
+  if (game.over()) {
+      return score(game);
+  }
+  depth += 1;
+  var scores = [];
+  var moves = [];
+
+  var availableMoves = game.get_available_moves();
+  for (var i = 0; i < availableMoves.length; i++) {
+      var move = availableMoves[i];
+      var possible_game = game.get_new_state(move);
+      scores.push(minimax(possible_game, depth));
+      moves.push(move);
+  }
+
+  if (game.active_turn === player) {
+      var max_score_index = 0;
+      var max_score = scores[0];
+      for (var j = 1; j < scores.length; j++) {
+          if (scores[j] > max_score) {
+              max_score = scores[j];
+              max_score_index = j;
+          }
+      }
+      choice = moves[max_score_index];
+      return scores[max_score_index];
+  } else {
+      var min_score_index = 0;
+      var min_score = scores[0];
+      for (var k = 1; k < scores.length; k++) {
+          if (scores[k] < min_score) {
+              min_score = scores[k];
+              min_score_index = k;
+          }
+      }
+      choice = moves[min_score_index];
+      return scores[min_score_index];
+  }
+}
