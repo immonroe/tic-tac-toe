@@ -189,7 +189,7 @@ function startGame(playerChoice) {
   console.log('Player chose:', playerChoice);
 }
 
-// impossible difficulty
+// impossible difficulty - still need to implement...
 function minimax(game, depth) {
   if (game.over()) {
       return score(game);
